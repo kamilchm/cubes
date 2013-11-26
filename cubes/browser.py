@@ -789,9 +789,10 @@ def cut_from_string(dimension, string):
         (from_path, to_path) = map(path_from_string, string.split(RANGE_CUT_SEPARATOR))
         return RangeCut(dimension, from_path, to_path, hierarchy)
     else:
-        raise ArgumentError("Unknown cut format (check that keys "
-                        "consist only of of alphanumeric characters and "
-                        "underscore)")
+        return PointCut(dimension, path_from_string(string), hierarchy)
+        #raise ArgumentError("Unknown cut format (check that keys "
+        #                "consist only of of alphanumeric characters and "
+        #                "underscore)")
 
 def cut_from_dict(desc, cube=None):
     """Returns a cut from `desc` dictionary. If `cube` is specified, then the
@@ -1352,10 +1353,10 @@ def levels_from_drilldown(cell, drilldown):
                         "determine implicit next level." % \
                                 (hier, dim, cut_hierarchy))
 
-            if depth >= len(hier):
-                raise HierarchyError("Hierarchy %s in dimension %s has only "
-                                     "%d levels, can not drill to %d" % \
-                                     (hier,dim,len(hier),depth+1))
+            #if depth >= len(hier):
+            #    raise HierarchyError("Hierarchy %s in dimension %s has only "
+            #                         "%d levels, can not drill to %d" % \
+            #                         (hier,dim,len(hier),depth+1))
 
             # if index + 1 >= len(hier):
             #     raise HierarchyError("Can not drill down. Level %s is "
