@@ -827,7 +827,7 @@ class QueryContext(object):
 
             # Prepare condition: dimension.level_key = path_value
             column = self.column(level.key)
-            conditions.append(column == value)
+            conditions.append(column.like(value))
 
             # FIXME: join attributes only if details are requested
             # Collect grouping columns
